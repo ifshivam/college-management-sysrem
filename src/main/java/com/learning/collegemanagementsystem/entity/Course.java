@@ -21,6 +21,8 @@ public class Course {
     @Column(name = "course_name")
     private String name;
     @OneToMany(mappedBy = "enrolledCourse",fetch = FetchType.EAGER)
+
+    private String durationInMonth;
     @JsonBackReference
     private List<Student> enrolledStudents;
 }

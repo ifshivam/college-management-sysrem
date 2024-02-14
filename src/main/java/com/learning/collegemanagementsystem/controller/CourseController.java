@@ -39,4 +39,17 @@ public class CourseController {
     public Optional<Course> findCourseById(@PathVariable("id") Long courseId){
         return courseService.getCourseDetails(courseId);
     }
+
+    @Operation(summary="update Course details for valid CourseId",description = "xyz-abc")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200",
+                    description=" fetch course details"),
+            @ApiResponse(responseCode = "400",description = "Request data is not valid/found")
+    })
+    @PutMapping("/updateById/{id}")
+    public Optional<Course> findCourseDetailsById(@PathVariable("id") Long courseId,@RequestBody Course course){
+        return courseService.updateCourseDetailsById(courseId,course);
+    }
+
+
 }

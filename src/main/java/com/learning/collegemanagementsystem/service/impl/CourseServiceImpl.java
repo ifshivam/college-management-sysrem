@@ -22,4 +22,13 @@ public class CourseServiceImpl implements CourseService {
     public Optional<Course> getCourseDetails(Long id) {
         return courseRepository.findById(id);
     }
+
+    @Override
+    public Optional<Course> updateCourseDetailsById(Long id,Course course) {
+       return courseRepository.findById(id).map(courseRecords->{
+            if(course.getName()!=null)courseRecords.setName(course.getName());
+            if (course.getDurationInMonth()!=null)courseRecords.setDurationInMonth(course.getDurationInMonth());
+            return courseRecords;
+        });
+    }
 }
