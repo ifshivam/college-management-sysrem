@@ -1,6 +1,7 @@
 package com.learning.collegemanagementsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,9 +22,8 @@ public class Course {
     private Long id;
     @Column(name = "course_name")
     private String name;
-    @OneToMany(mappedBy = "enrolledCourse",fetch = FetchType.EAGER)
-
     private String durationInMonth;
-    @JsonBackReference
-    private List<Student> enrolledStudents;
+    @OneToMany(mappedBy = "enrolledCourse")
+    @JsonManagedReference
+    private List<Student> enrolledStudents = new ArrayList<>();;
 }

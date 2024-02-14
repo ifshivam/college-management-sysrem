@@ -9,4 +9,6 @@ public interface CourseService {
     Optional<Course> getCourseDetails(Long id);
 
     Optional<Course> updateCourseDetailsById(Long id,Course course);
+
+    Optional<Course> findCourseDetailsByName(String name);
 }

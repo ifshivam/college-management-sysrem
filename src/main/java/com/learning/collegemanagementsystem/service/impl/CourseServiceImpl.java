@@ -31,4 +31,9 @@ public class CourseServiceImpl implements CourseService {
             return courseRecords;
         });
     }
+
+    @Override
+    public Optional<Course> findCourseDetailsByName(String name) {
+        return Optional.ofNullable(courseRepository.findByName(name));
+    }
 }

@@ -22,6 +22,6 @@ public class Student {
     private String email;
     @ManyToOne
     @JoinColumn(name = "courseId")
-    @JsonManagedReference
+    @JsonBackReference
     private Course enrolledCourse;
 }

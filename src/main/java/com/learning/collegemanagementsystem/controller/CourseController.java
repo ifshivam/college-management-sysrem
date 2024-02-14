@@ -51,5 +51,16 @@ public class CourseController {
         return courseService.updateCourseDetailsById(courseId,course);
     }
 
+    @Operation(summary="fetch Course details for valid Course Name",description = "xyz-abc")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200",
+                    description=" fetch course details by course name"),
+            @ApiResponse(responseCode = "400",description = "Request data is not valid/found")
+    })
+    @GetMapping("/getByName/{name}")
+    public Optional<Course> findCourseDetailsByName(@PathVariable String name){
+        return courseService.findCourseDetailsByName(name);
+    }
+
 
 }
