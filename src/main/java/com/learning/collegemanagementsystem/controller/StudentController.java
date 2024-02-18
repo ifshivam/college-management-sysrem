@@ -1,6 +1,7 @@
 package com.learning.collegemanagementsystem.controller;
 
 import com.learning.collegemanagementsystem.entity.Student;
+import com.learning.collegemanagementsystem.exception.StudentNotFoundException;
 import com.learning.collegemanagementsystem.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -38,7 +39,7 @@ public class StudentController {
     })
 
     @GetMapping("/getById/{id}")
-    public Optional<Student> findStudentById(@PathVariable("id") Long studentId){
+    public Student findStudentById(@PathVariable("id") Long studentId) throws StudentNotFoundException {
         return studentService.getStudentDetails(studentId);
     }
 }

@@ -20,7 +20,7 @@ public class Student {
     private String gender;
     @Column(name = "email_id", nullable = false)
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "courseId")
     @JsonBackReference
     private Course enrolledCourse;

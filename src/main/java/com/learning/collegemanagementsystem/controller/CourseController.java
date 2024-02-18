@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,7 +48,7 @@ public class CourseController {
             @ApiResponse(responseCode = "400",description = "Request data is not valid/found")
     })
     @PutMapping("/updateById/{id}")
-    public Optional<Course> findCourseDetailsById(@PathVariable("id") Long courseId,@RequestBody Course course){
+    public Optional<Course> findCourseDetailsById(@PathVariable("id") Long courseId, @Valid @RequestBody Course course){
         return courseService.updateCourseDetailsById(courseId,course);
     }
 
